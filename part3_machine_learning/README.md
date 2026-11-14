@@ -35,6 +35,7 @@ part3_machine_learning/
 │   ├── regression_v1..v3_*.joblib, classification_v1..v3_*.joblib          (all versions)
 │   └── lstm_next_hour.keras, lstm_scaling.json, next_hour_tree_for_shap.joblib
 ├── mlflow/
+│   ├── screenshots/              MLflow UI: runs table, metric charts, model registry, version history
 │   ├── mlflow.db                 MLflow tracking store and model registry (SQLite)
 │   ├── MLFLOW_SUMMARY.md         All experiments, runs, parameters, metrics and registered versions
 │   └── export_mlflow_summary.py  Writes MLFLOW_SUMMARY.md from the database
@@ -86,7 +87,7 @@ uvicorn deployment.app:app --reload
 python -m mlflow ui --backend-store-uri sqlite:///mlflow/mlflow.db
 ```
 
-The MLflow database holds every run, parameter, metric and registered model version. The model binaries that MLflow logs are duplicates of the files in `models/`, so `mlflow/artifacts/` is not committed; `python notebooks/run_part3.py` regenerates it.
+The MLflow database holds every run, parameter, metric and registered model version; `mlflow/screenshots/` shows them in the MLflow UI without running anything. The model binaries that MLflow logs are duplicates of the files in `models/`, so `mlflow/artifacts/` is not committed; `python notebooks/run_part3.py` regenerates it.
 
 ## Results summary
 
