@@ -114,4 +114,5 @@ Every module creates `logger = logging.getLogger(__name__)`. Handlers are attach
 - The risk label is a proxy derived partly from model inputs, so its scores overstate what real accident prediction would achieve.
 - Single westbound sensor, a 10-month gap (2014-2015), and a change in how cloud cover and weather labels were recorded around 2015.
 - Errors are larger for severe weather, holidays and weekends (details in `responsible_ai_report.pdf`).
+- Champion models are chosen on the same 2017-2018 test scores that are reported, so those scores are slightly optimistic; a separate validation year would be stricter. The effect is small because the top models are near-tied (see `models/MODEL_VERSIONS.md`).
 - The deployment is a local mock-up without authentication, scaling or a live data feed.
