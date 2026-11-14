@@ -93,6 +93,8 @@ def build_row(inp: HourInput) -> pd.DataFrame:
         when = pd.Timestamp(inp.datetime)
     except (ValueError, TypeError) as exc:
         raise HTTPException(400, f"Malformed datetime '{inp.datetime}'. Use YYYY-MM-DD HH:MM") from exc
+    if pd.isna(when):  # an empty string parses to NaT (no timestamp) instead of raising
+        raise HTTPException(400, "Missing datetime. Use YYYY-MM-DD HH:MM")
     try:
         return engine().feature_row(when, inp.weather, inp.temp_c, int(inp.is_holiday),
                                     inp.rain_1h, inp.clouds_all)
