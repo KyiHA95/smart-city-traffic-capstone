@@ -1,0 +1,33 @@
+2026-11-13 14:36:30 | INFO     | pipeline | Pipeline started (log level INFO)
+2026-11-13 14:36:30 | INFO     | pipeline | Loading raw data from missing_file.csv
+2026-11-13 14:36:30 | ERROR    | pipeline | Pipeline stopped: Raw data file not found: missing_file.csv
+Traceback (most recent call last):
+  File "/tmp/errrun/pipeline.py", line 142, in load_raw_data
+    df = pd.read_csv(path, keep_default_na=False, na_values=[""])
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/pandas/io/parsers/readers.py", line 872, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/pandas/io/parsers/readers.py", line 300, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/pandas/io/parsers/readers.py", line 1643, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/pandas/io/parsers/readers.py", line 1907, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/pandas/io/common.py", line 930, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'missing_file.csv'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/tmp/errrun/pipeline.py", line 477, in main
+    raw = load_raw_data(args.input)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/errrun/pipeline.py", line 144, in load_raw_data
+    raise DataLoadError(f"Raw data file not found: {path}") from exc
+DataLoadError: Raw data file not found: missing_file.csv

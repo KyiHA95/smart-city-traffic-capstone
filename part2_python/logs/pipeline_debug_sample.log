@@ -1,0 +1,63 @@
+2026-11-13 04:01:48 | INFO     | pipeline | Pipeline started (log level DEBUG)
+2026-11-13 04:01:48 | INFO     | pipeline | Loading raw data from ../data/Metro_Interstate_Traffic_Volume.csv
+2026-11-13 04:01:48 | INFO     | pipeline | Raw file loaded successfully: 48204 rows x 9 columns
+2026-11-13 04:01:48 | INFO     | pipeline | Schema validation passed: all 9 expected columns present
+2026-11-13 04:01:48 | INFO     | pipeline | Standardise categories: 'holiday' already consistent (12 distinct values)
+2026-11-13 04:01:48 | INFO     | pipeline | Standardise categories: 'weather_main' already consistent (11 distinct values)
+2026-11-13 04:01:48 | WARNING  | pipeline | Standardise categories: modified 1730 value(s) in 'weather_description' to make case/whitespace consistent (e.g. 'SQUALLS' -> 'squalls', 'Sky is Clear' -> 'sky is clear')
+2026-11-13 04:01:48 | DEBUG    | pipeline | Step standardise_categoricals: 48204 -> 48204 rows
+2026-11-13 04:01:48 | INFO     | pipeline | Numeric types: temp, rain_1h, snow_1h, clouds_all and traffic_volume stored as numbers
+2026-11-13 04:01:48 | DEBUG    | pipeline | Step coerce_numeric_types: 48204 -> 48204 rows
+2026-11-13 04:01:48 | INFO     | pipeline | Date/time parsing: all remaining timestamps valid, range 2012-10-02 09:00:00 to 2018-09-30 23:00:00
+2026-11-13 04:01:48 | DEBUG    | pipeline | Step parse_datetimes: 48204 -> 48204 rows
+2026-11-13 04:01:48 | WARNING  | pipeline | Duplicate rows: dropped 17 exact duplicate row(s) (identical in every column)
+2026-11-13 04:01:48 | DEBUG    | pipeline | Step remove_duplicate_rows: 48204 -> 48187 rows
+2026-11-13 04:01:48 | WARNING  | pipeline | Duplicate timestamps: dropped 7612 row(s) that repeated an hour already recorded with a different weather description; kept the most severe weather report for each of 5430 affected hours
+2026-11-13 04:01:48 | DEBUG    | pipeline | Step resolve_duplicate_timestamps: 48187 -> 40575 rows
+2026-11-13 04:01:48 | WARNING  | pipeline | Impossible temperatures: 10 reading(s) outside 220-330 K (values seen: [0.0]) set to missing for imputation; 0 K is absolute zero, a sensor error
+2026-11-13 04:01:48 | DEBUG    | pipeline | Step flag_impossible_temperatures: 40575 -> 40575 rows
+2026-11-13 04:01:48 | WARNING  | pipeline | Impossible precipitation: 1 'rain_1h' reading(s) outside 0-305 mm/h (values seen: [9831.3]) set to missing for imputation; the world record for one hour is about 305 mm
+2026-11-13 04:01:48 | INFO     | pipeline | Impossible precipitation: 'snow_1h' within 0-305 mm/h
+2026-11-13 04:01:48 | DEBUG    | pipeline | Step flag_impossible_precipitation: 40575 -> 40575 rows
+2026-11-13 04:01:48 | INFO     | pipeline | Cloud cover: all values within 0-100%
+2026-11-13 04:01:48 | DEBUG    | pipeline | Step check_cloud_cover: 40575 -> 40575 rows
+2026-11-13 04:01:48 | DEBUG    | pipeline | Monthly median imputation: 'temp' 2014-01 median = 259.910 applied to 4 row(s)
+2026-11-13 04:01:48 | DEBUG    | pipeline | Monthly median imputation: 'temp' 2014-02 median = 259.520 applied to 6 row(s)
+2026-11-13 04:01:48 | WARNING  | pipeline | Monthly median imputation: imputed 10 missing/impossible 'temp' value(s) using the median of the same month
+2026-11-13 04:01:48 | DEBUG    | pipeline | Monthly median imputation: 'rain_1h' 2016-07 median = 0.000 applied to 1 row(s)
+2026-11-13 04:01:48 | WARNING  | pipeline | Monthly median imputation: imputed 1 missing/impossible 'rain_1h' value(s) using the median of the same month
+2026-11-13 04:01:48 | INFO     | pipeline | Monthly median imputation: 'snow_1h' has no missing values
+2026-11-13 04:01:48 | DEBUG    | pipeline | Step impute_monthly_median: 40575 -> 40575 rows
+2026-11-13 04:01:48 | INFO     | pipeline | Traffic volume: all values present and non-negative (0-7280)
+2026-11-13 04:01:48 | DEBUG    | pipeline | Step validate_traffic_volume: 40575 -> 40575 rows
+2026-11-13 04:01:48 | WARNING  | pipeline | Sensor anomalies: flagged 32 hour(s) on 8 day(s) with volume below 5% of the typical value for that hour and weekday; rows kept and marked is_sensor_anomaly=1
+2026-11-13 04:01:48 | DEBUG    | pipeline | Sensor anomaly dates: 2015-07-24, 2015-07-25, 2016-07-09, 2016-07-22, 2016-07-23, 2016-07-24, 2016-08-31, 2016-09-07
+2026-11-13 04:01:48 | DEBUG    | pipeline | Step flag_sensor_anomalies: 40575 -> 40575 rows
+2026-11-13 04:01:48 | INFO     | pipeline | Final checks passed: no missing values, one row per hour, sorted by date_time
+2026-11-13 04:01:48 | DEBUG    | pipeline | Step final_checks: 40575 -> 40575 rows
+2026-11-13 04:01:48 | INFO     | pipeline | Cleaning complete: 48204 rows in, 40575 rows out (7629 removed), 14 columns
+2026-11-13 04:01:49 | INFO     | pipeline | Saved cleaned data: output/cleaned_traffic.csv.gz (40575 rows x 14 columns)
+2026-11-13 04:01:49 | INFO     | feature_engineering | Feature engineering started: input shape 40575 rows x 14 columns
+2026-11-13 04:01:49 | DEBUG    | feature_engineering | Holiday propagation: 53 holiday dates found in midnight labels
+2026-11-13 04:01:49 | INFO     | feature_engineering | Time features added: hour, day_of_week, is_weekend, is_holiday, is_peak_hour, time_of_day and sin/cos encodings for hour, weekday, month
+2026-11-13 04:01:49 | DEBUG    | feature_engineering | One-hot encoding weather_main into 11 columns: ['weather_clear', 'weather_clouds', 'weather_drizzle', 'weather_fog', 'weather_haze', 'weather_mist', 'weather_rain', 'weather_smoke', 'weather_snow', 'weather_squall', 'weather_thunderstorm']
+2026-11-13 04:01:49 | INFO     | feature_engineering | Weather features added: temp_c, 11 one-hot weather columns, is_precipitation, is_low_visibility, is_severe_weather, weather_severity, temp_band
+2026-11-13 04:01:49 | DEBUG    | feature_engineering | Scaling 'temp_c' by z-score: mean=8.2308, std=13.0958
+2026-11-13 04:01:49 | DEBUG    | feature_engineering | Scaling 'clouds_all' to 0-1: min=0.0000, max=100.0000
+2026-11-13 04:01:49 | DEBUG    | feature_engineering | Scaling 'log1p(rain_1h)' to 0-1: min=0.0000, max=4.0365
+2026-11-13 04:01:49 | INFO     | feature_engineering | Scaled features added: temp_c_zscore, clouds_minmax, rain_log_minmax (Part 3 refits scalers on training data only)
+2026-11-13 04:01:49 | DEBUG    | feature_engineering | Congestion quartile thresholds: Q1=1254.5, Q2=3431.0, Q3=4953.0
+2026-11-13 04:01:49 | DEBUG    | feature_engineering | Congestion category counts: {'Low': 10168, 'Medium': 10140, 'High': 10133, 'Severe': 10134}
+2026-11-13 04:01:49 | INFO     | feature_engineering | Target added: congestion_category (quartile-based, 4 classes) and is_congested (> 5500, Part 1 definition: 15.1% of hours)
+2026-11-13 04:01:49 | INFO     | feature_engineering | Feature engineering complete: output shape 40575 rows x 54 columns (40 columns added)
+2026-11-13 04:01:50 | INFO     | pipeline | Saved feature table: output/traffic_features.csv.gz (40575 rows x 54 columns)
+2026-11-13 04:01:50 | INFO     | visualizations | Creating 6 figures from 40543 rows (32 sensor-anomaly hours excluded)
+2026-11-13 04:01:50 | INFO     | visualizations | Saved figure: figures/fig01_hourly_weekday_vs_weekend.png
+2026-11-13 04:01:51 | INFO     | visualizations | Saved figure: figures/fig02_traffic_distribution.png
+2026-11-13 04:01:51 | DEBUG    | visualizations | Temperature vs traffic Pearson r (anomalies excluded) = 0.1413
+2026-11-13 04:01:51 | INFO     | visualizations | Saved figure: figures/fig03_temperature_vs_traffic.png
+2026-11-13 04:01:52 | INFO     | visualizations | Saved figure: figures/fig04_weather_impact.png
+2026-11-13 04:01:52 | INFO     | visualizations | Saved figure: figures/fig05_congestion_heatmap.png
+2026-11-13 04:01:52 | INFO     | visualizations | Saved figure: figures/fig06_monthly_trend.png
+2026-11-13 04:01:52 | INFO     | visualizations | Figures complete: 6 saved, 0 failed
+2026-11-13 04:01:52 | INFO     | pipeline | Pipeline finished successfully
