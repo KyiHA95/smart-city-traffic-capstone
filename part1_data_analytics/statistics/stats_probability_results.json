@@ -1,0 +1,106 @@
+{
+  "descriptive": {
+    "count": 48204,
+    "mean": 3259.8183553232097,
+    "median": 3380.0,
+    "std_sample": 1986.8606704463589,
+    "variance_sample": 3947615.3237665547,
+    "std_population": 1986.8400614618868,
+    "variance_population": 3947533.4298298736,
+    "min": 0.0,
+    "max": 7280.0,
+    "range": 7280.0,
+    "q1": 1193.0,
+    "q3": 4933.0,
+    "iqr": 3740.0,
+    "coefficient_of_variation_pct": 60.950042421899376,
+    "skewness": -0.08938135143647917,
+    "zero_volume_hours": 2
+  },
+  "correlation": {
+    "pearson_r_all_rows": 0.1302987981711266,
+    "p_value_all_rows": 1.636465145897604e-181,
+    "pearson_r_excl_0K": 0.13229131507313133,
+    "p_value_excl_0K": 4.711844607327639e-187,
+    "r_squared_excl_0K": 0.017500992043778505,
+    "spearman_rho_excl_0K": 0.13258882504747385,
+    "spearman_p": 6.804941254152572e-188,
+    "pearson_r_daytime_06_19": 0.11511199984945393,
+    "rows_with_0K_excluded": 10
+  },
+  "probability": {
+    "n": 48204,
+    "P(Congestion)": 0.1472906812712638,
+    "P(Clear)": 0.277798522944154,
+    "P(Congestion AND Clear)": 0.03657372832130114,
+    "P(Clear | Congestion)": 0.2483098591549296,
+    "P(Congestion | Clear)": 0.13165558957508774,
+    "P(High Temp)": 0.24379719525350593,
+    "P(High Temp | Congestion)": 0.26295774647887327,
+    "P(Congestion) x P(Clear)": 0.04091713370059525,
+    "independence_gap": -0.004343405379294112,
+    "independence_ratio": 0.8938487380109197,
+    "chi2": 35.917197721681795,
+    "chi2_p_value": 2.0588343402265796e-09,
+    "clear_congested": 1763,
+    "clear_not_congested": 11628,
+    "clouds_congested": 2592,
+    "clouds_not_congested": 12572,
+    "odds_clear": 0.15161678706570347,
+    "odds_clouds": 0.20617244670696785,
+    "odds_ratio_clear_vs_clouds": 0.7353882125733118,
+    "odds_ratio_95ci": [
+      0.6887281366720795,
+      0.7852094235686158
+    ],
+    "mantel_haenszel_or_hour_adjusted": 1.0058731142596755,
+    "P(Clear) at night (22-05h)": 0.3286554724843731,
+    "P(Clear) at peaks (7-8h, 15-17h)": 0.22947872977831035,
+    "congestion_rate_by_weather": {
+      "Clouds": {
+        "rate": 0.17093115273015036,
+        "n": 15164
+      },
+      "Fog": {
+        "rate": 0.16666666666666666,
+        "n": 912
+      },
+      "Drizzle": {
+        "rate": 0.1543108182317408,
+        "n": 1821
+      },
+      "Rain": {
+        "rate": 0.15197461212976024,
+        "n": 5672
+      },
+      "Smoke": {
+        "rate": 0.15,
+        "n": 20
+      },
+      "Mist": {
+        "rate": 0.14436974789915966,
+        "n": 5950
+      },
+      "Thunderstorm": {
+        "rate": 0.13636363636363635,
+        "n": 1034
+      },
+      "Clear": {
+        "rate": 0.13165558957508774,
+        "n": 13391
+      },
+      "Haze": {
+        "rate": 0.12720588235294117,
+        "n": 1360
+      },
+      "Snow": {
+        "rate": 0.0952712100139082,
+        "n": 2876
+      },
+      "Squall": {
+        "rate": 0.0,
+        "n": 4
+      }
+    }
+  }
+}
