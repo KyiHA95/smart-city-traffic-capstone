@@ -1,0 +1,179 @@
+{
+  "results": {
+    "LSTM": {
+      "MAE": 180.06887817382812,
+      "R2": 0.9814149141311646
+    },
+    "Naive: same as previous hour": {
+      "MAE": 592.337292080746,
+      "R2": 0.8260064892984931
+    },
+    "Naive: same hour yesterday": {
+      "MAE": 561.3781673518579,
+      "R2": 0.7317367297427786
+    },
+    "Tree model with lag features (SHAP)": {
+      "MAE": 153.964265725654,
+      "R2": 0.9856281755354617
+    }
+  },
+  "epochs_run": 80,
+  "train_seconds": 42.069411994000006,
+  "parameters": 13249,
+  "windows": {
+    "train": 14218,
+    "test": 14483
+  },
+  "lstm_permutation_importance": {
+    "target hour: hour_cos": 1100.7488555908203,
+    "sequence: volume_scaled": 1009.8764190673828,
+    "sequence: hour_sin": 519.5155792236328,
+    "sequence: hour_cos": 518.0549468994141,
+    "target hour: hour_sin": 508.40199279785156,
+    "target hour: dow_sin": 142.01551818847656,
+    "sequence: dow_sin": 136.55445861816406,
+    "sequence: is_weekend": 115.04542541503906,
+    "target hour: dow_cos": 89.66572570800781,
+    "target hour: is_weekend": 82.27983093261719,
+    "sequence: dow_cos": 66.39328002929688,
+    "target hour: temp_scaled": 51.130950927734375,
+    "sequence: temp_scaled": 42.4156494140625,
+    "target hour: is_precipitation": 23.201126098632812,
+    "target hour: severity_scaled": 19.221435546875,
+    "sequence: severity_scaled": 12.365737915039062,
+    "sequence: is_holiday": 10.458984375,
+    "sequence: is_precipitation": 7.770660400390625,
+    "target hour: is_holiday": 4.9749908447265625,
+    "target hour: is_low_visibility": 2.79864501953125
+  },
+  "shap": {
+    "mean_abs_shap": {
+      "lag_1h": 1209.4,
+      "hour_cos": 495.7,
+      "change_last_hour": 259.2,
+      "hour": 88.4,
+      "lag_24h": 71.6,
+      "mean_prev_24h": 46.7,
+      "hour_sin": 37.8,
+      "lag_3h": 35.9,
+      "day_of_week": 31.3,
+      "lag_2h": 15.9,
+      "temp_c": 10.9,
+      "weather_severity": 5.4,
+      "is_holiday": 2.2,
+      "is_low_visibility": 0.3,
+      "is_weekend": 0.0,
+      "is_precipitation": 0.0
+    },
+    "expected_value": 3259.7401534644737,
+    "example": {
+      "features": {
+        "lag_1h": 5624.0,
+        "lag_2h": 2703.0,
+        "lag_3h": 838.0,
+        "lag_24h": 6828.0,
+        "mean_prev_24h": 3740.917,
+        "change_last_hour": 2921.0,
+        "hour": 7.0,
+        "day_of_week": 3.0,
+        "is_weekend": 0.0,
+        "is_holiday": 0.0,
+        "temp_c": 1.22,
+        "weather_severity": 1.0,
+        "is_precipitation": 0.0,
+        "is_low_visibility": 0.0,
+        "hour_sin": 0.966,
+        "hour_cos": -0.259
+      },
+      "prediction": 6613.241510335992,
+      "contributions": {
+        "lag_1h": 1429.0,
+        "change_last_hour": 955.1,
+        "hour_cos": 612.5,
+        "lag_24h": 227.6,
+        "mean_prev_24h": 92.6,
+        "hour": 56.7
+      }
+    }
+  },
+  "lime": {
+    "high_risk_fog_morning": {
+      "date_time": "2017-01-17 09:00:00",
+      "predicted_probability": 0.9983865676597089,
+      "actual": 1,
+      "weights": [
+        [
+          "weather_severity > 4.00",
+          0.4272480436875758
+        ],
+        [
+          "weather_rain <= 0.00",
+          0.1611198066561979
+        ],
+        [
+          "hour_cos <= -0.71",
+          0.15429869681867833
+        ],
+        [
+          "weather_drizzle <= 0.00",
+          0.11723055336362011
+        ],
+        [
+          "weather_haze <= 0.00",
+          0.03728706063059256
+        ],
+        [
+          "weather_snow <= 0.00",
+          0.03644120118409788
+        ],
+        [
+          "is_peak_hour <= 0.00",
+          -0.03272826188301101
+        ],
+        [
+          "is_holiday <= 0.00",
+          0.023598698292450156
+        ]
+      ]
+    },
+    "low_risk_fog_night": {
+      "date_time": "2017-01-19 00:00:00",
+      "predicted_probability": 0.0003442597264944418,
+      "actual": 0,
+      "weights": [
+        [
+          "weather_severity > 4.00",
+          0.4154142853535502
+        ],
+        [
+          "hour_cos > 0.71",
+          -0.15775598507032113
+        ],
+        [
+          "weather_rain <= 0.00",
+          0.15201153972219147
+        ],
+        [
+          "snow_1h <= 0.00",
+          0.10805656763320605
+        ],
+        [
+          "weather_drizzle <= 0.00",
+          0.09764221976759566
+        ],
+        [
+          "hour <= 5.00",
+          -0.03641204880896238
+        ],
+        [
+          "weather_haze <= 0.00",
+          0.03387819863309124
+        ],
+        [
+          "weather_thunderstorm <= 0.00",
+          0.03378152808846443
+        ]
+      ]
+    }
+  }
+}

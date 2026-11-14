@@ -1,0 +1,151 @@
+2026-11-13 10:52:42 | WARNING  | run_part3 | Reset MLflow tracking store (mlflow.db and artifacts) so the rebuild starts from model version 1
+2026-11-13 10:52:42 | INFO     | run_part3 | Running notebooks/train_supervised.py
+2026-11-13 10:52:44 | INFO     | common | Loaded Part 2 feature table: 40575 rows x 54 columns
+2026-11-13 10:52:44 | WARNING  | common | Dropped 32 hour(s) flagged as sensor faults in Part 2 (volume is not a real traffic reading)
+2026-11-13 10:52:44 | INFO     | common | Proxy label built: high_risk = High/Severe congestion AND severe or low-visibility weather -> 3133 positive hours (7.7%)
+2026-11-13 10:52:44 | INFO     | common | Modelling data ready: 40543 rows, 31 model features
+2026-11-13 10:52:44 | INFO     | common | Chronological split: train 25297 rows (2012-2016), test 15246 rows (2017-2018)
+2026-11-13 10:52:44 | INFO     | train_supervised | Feature set (31): hour, day_of_week, month, is_weekend, is_peak_hour, hour_sin, hour_cos, dow_sin, dow_cos, month_sin, month_cos, is_holiday, temp_c, rain_1h, snow_1h, clouds_all, weather_severity, is_precipitation, is_low_visibility, is_severe_weather, weather_clear, weather_clouds, weather_drizzle, weather_fog, weather_haze, weather_mist, weather_rain, weather_smoke, weather_snow, weather_squall, weather_thunderstorm
+2026-11-13 10:52:47 | INFO     | common | MLflow tracking at part3_machine_learning/mlflow/mlflow.db, experiment 'traffic_supervised_models'
+2026-11-13 10:52:52 | INFO     | train_supervised | regression v1 ridge_regression trained in 0.1s: MAE=548.953, R2=0.872, RMSE=707.572 (saved regression_v1_ridge_regression.joblib, 0.0 MB)
+2026-11-13 10:53:00 | INFO     | train_supervised | regression v2 random_forest trained in 4.7s: MAE=228.410, R2=0.964, RMSE=374.022 (saved regression_v2_random_forest.joblib, 4.4 MB)
+2026-11-13 10:53:06 | INFO     | train_supervised | regression v3 hist_gradient_boosting trained in 2.5s: MAE=232.914, R2=0.963, RMSE=379.047 (saved regression_v3_hist_gradient_boosting.joblib, 0.9 MB)
+2026-11-13 10:53:09 | INFO     | train_supervised | classification v1 logistic_regression trained in 0.1s: accuracy=0.979, precision=0.817, recall=0.987, f1=0.894, roc_auc=0.998, pr_auc=0.966 | within risky-weather hours: F1=0.894, ROC AUC=0.981 (saved classification_v1_logistic_regression.joblib, 0.0 MB)
+2026-11-13 10:53:13 | INFO     | train_supervised | classification v2 random_forest trained in 1.3s: accuracy=0.989, precision=0.899, recall=0.992, f1=0.943, roc_auc=0.998, pr_auc=0.975 | within risky-weather hours: F1=0.943, ROC AUC=0.986 (saved classification_v2_random_forest.joblib, 1.1 MB)
+2026-11-13 10:53:17 | INFO     | train_supervised | classification v3 hist_gradient_boosting trained in 1.0s: accuracy=0.991, precision=0.924, recall=0.976, f1=0.949, roc_auc=0.997, pr_auc=0.978 | within risky-weather hours: F1=0.949, ROC AUC=0.985 (saved classification_v3_hist_gradient_boosting.joblib, 0.2 MB)
+2026-11-13 10:53:17 | INFO     | train_supervised | traffic_volume_regressor: 2 versions within 0.005 of the best R2; choosing the smallest (hist_gradient_boosting, 0.9 MB)
+2026-11-13 10:53:17 | INFO     | train_supervised | Champion for traffic_volume_regressor: v3 hist_gradient_boosting (R2=0.963) -> alias 'champion', exported traffic_regressor_champion.joblib
+2026-11-13 10:53:17 | INFO     | train_supervised | Champion for proxy_risk_classifier: v3 hist_gradient_boosting (f1=0.949) -> alias 'champion', exported risk_classifier_champion.joblib
+2026-11-13 10:53:18 | INFO     | train_supervised | Saved figures: supervised_model_comparison.png, regression_actual_vs_predicted.png, classification_roc_confusion.png
+2026-11-13 10:53:18 | INFO     | train_supervised | Error breakdown by hour band, weather, day type and year computed for the bias and fairness report
+2026-11-13 10:53:18 | INFO     | train_supervised | Saved model version table: models/MODEL_VERSIONS.md
+2026-11-13 10:53:18 | INFO     | common | Saved part3_machine_learning/notebooks/outputs/supervised_results.json
+2026-11-13 10:53:19 | INFO     | run_part3 | Finished notebooks/train_supervised.py in 37.1s
+2026-11-13 10:53:19 | INFO     | run_part3 | Running notebooks/unsupervised.py
+2026-11-13 10:53:21 | INFO     | common | Loaded Part 2 feature table: 40575 rows x 54 columns
+2026-11-13 10:53:21 | WARNING  | common | Dropped 32 hour(s) flagged as sensor faults in Part 2 (volume is not a real traffic reading)
+2026-11-13 10:53:21 | INFO     | common | Proxy label built: high_risk = High/Severe congestion AND severe or low-visibility weather -> 3133 positive hours (7.7%)
+2026-11-13 10:53:21 | INFO     | common | Modelling data ready: 40543 rows, 31 model features
+2026-11-13 10:53:22 | INFO     | common | MLflow tracking at part3_machine_learning/mlflow/mlflow.db, experiment 'traffic_unsupervised'
+2026-11-13 10:53:35 | INFO     | unsupervised | Silhouette scores by k: 2:0.300, 3:0.330, 4:0.326, 5:0.346, 6:0.337, 7:0.361, 8:0.371, 9:0.389, 10:0.408, 11:0.415, 12:0.408
+2026-11-13 10:53:35 | INFO     | unsupervised | Chosen k=8: best silhouette within k=3-8. Silhouette keeps rising to k=11 because the binary weekend flag and stepped weather severity allow ever finer splits of the same regimes, so larger k adds clusters without adding insight
+2026-11-13 10:53:35 | INFO     | unsupervised | Cluster 1 'Quiet weekday 00-05h': 5690 hours (14%), mean 880 vehicles, 0% congested, 0% weekend, 0% bad weather
+2026-11-13 10:53:35 | INFO     | unsupervised | Cluster 5 'Quiet weekend all day': 4790 hours (12%), mean 1180 vehicles, 0% congested, 100% weekend, 11% bad weather
+2026-11-13 10:53:35 | INFO     | unsupervised | Cluster 7 'Moderate weekday all day in bad weather': 3860 hours (10%), mean 1556 vehicles, 0% congested, 20% weekend, 97% bad weather
+2026-11-13 10:53:35 | INFO     | unsupervised | Cluster 4 'Moderate weekday 19-23h': 4763 hours (12%), mean 2548 vehicles, 0% congested, 0% weekend, 0% bad weather
+2026-11-13 10:53:35 | INFO     | unsupervised | Cluster 0 'Busy weekend 10-20h': 5357 hours (13%), mean 3897 vehicles, 1% congested, 100% weekend, 7% bad weather
+2026-11-13 10:53:35 | INFO     | unsupervised | Cluster 2 'Peak-congestion weekday 07-17h in bad weather': 4165 hours (10%), mean 4942 vehicles, 28% congested, 16% weekend, 98% bad weather
+2026-11-13 10:53:35 | INFO     | unsupervised | Cluster 6 'Peak-congestion weekday 06-12h': 6339 hours (16%), mean 5190 vehicles, 35% congested, 0% weekend, 0% bad weather
+2026-11-13 10:53:35 | INFO     | unsupervised | Cluster 3 'Peak-congestion weekday 13-18h': 5579 hours (14%), mean 5440 vehicles, 48% congested, 0% weekend, 0% bad weather
+2026-11-13 10:53:36 | INFO     | unsupervised | Saved figure: notebooks/outputs/kmeans_clusters.png
+2026-11-13 10:53:36 | INFO     | unsupervised | Transactions built: 40543 hours x 21 items (time band, day type, weather group, temperature band, congestion level)
+2026-11-13 10:53:36 | INFO     | unsupervised | Rule pruning: removed 110 redundant rule(s) whose extra conditions add less than 2% lift over a simpler rule
+2026-11-13 10:53:36 | INFO     | unsupervised | Apriori: 647 frequent itemsets, 42 rules predicting congestion level (min support 0.01, min confidence 0.50)
+2026-11-13 10:53:36 | INFO     | unsupervised | Rule 1 (lift 3.68, support 0.023): When it is Weekday and Cold and AM peak (06-09), congestion is Severe in 92% of hours, 3.7 times more often than the 25% seen overall.
+2026-11-13 10:53:36 | INFO     | unsupervised | Rule 2 (lift 3.67, support 0.016): When it is Weekend and Warm and PM peak (15-18), congestion is High in 92% of hours, 3.7 times more often than the 25% seen overall.
+2026-11-13 10:53:36 | INFO     | unsupervised | Rule 3 (lift 3.62, support 0.035): When it is Weekday and Mild and AM peak (06-09), congestion is Severe in 90% of hours, 3.6 times more often than the 25% seen overall.
+2026-11-13 10:53:36 | INFO     | unsupervised | Rule 4 (lift 3.62, support 0.015): When it is Weekday and AM peak (06-09) and Low visibility, congestion is Severe in 90% of hours, 3.6 times more often than the 25% seen overall.
+2026-11-13 10:53:36 | INFO     | unsupervised | Rule 5 (lift 3.54, support 0.024): When it is Weekend and Freezing and Night (23-05), congestion is Low in 88% of hours, 3.5 times more often than the 25% seen overall.
+2026-11-13 10:53:36 | INFO     | unsupervised | Rule 6 (lift 3.54, support 0.013): When it is Weekday and AM peak (06-09) and Rain/drizzle, congestion is Severe in 88% of hours, 3.5 times more often than the 25% seen overall.
+2026-11-13 10:53:36 | INFO     | unsupervised | Rule 7 (lift 3.52, support 0.039): When it is Freezing and Evening (19-22), congestion is Medium in 88% of hours, 3.5 times more often than the 25% seen overall.
+2026-11-13 10:53:36 | INFO     | unsupervised | Rule 8 (lift 3.52, support 0.013): When it is Evening (19-22) and Severe weather, congestion is Medium in 88% of hours, 3.5 times more often than the 25% seen overall.
+2026-11-13 10:53:36 | INFO     | unsupervised | Rule 9 (lift 3.51, support 0.016): When it is Weekend and Warm and Midday (10-14), congestion is High in 88% of hours, 3.5 times more often than the 25% seen overall.
+2026-11-13 10:53:36 | INFO     | unsupervised | Rule 10 (lift 3.50, support 0.018): When it is Evening (19-22) and Rain/drizzle, congestion is Medium in 87% of hours, 3.5 times more often than the 25% seen overall.
+2026-11-13 10:53:36 | INFO     | unsupervised | Saved figure: notebooks/outputs/association_rules_top.png
+2026-11-13 10:53:36 | INFO     | unsupervised | Saved notebooks/outputs/association_rules_top25.csv
+2026-11-13 10:53:36 | INFO     | common | Saved part3_machine_learning/notebooks/outputs/unsupervised_results.json
+2026-11-13 10:53:37 | INFO     | run_part3 | Finished notebooks/unsupervised.py in 18.1s
+2026-11-13 10:53:37 | INFO     | run_part3 | Running notebooks/deep_learning.py
+2026-11-13 10:53:40 | INFO     | common | Loaded Part 2 feature table: 40575 rows x 54 columns
+2026-11-13 10:53:40 | WARNING  | common | Dropped 32 hour(s) flagged as sensor faults in Part 2 (volume is not a real traffic reading)
+2026-11-13 10:53:40 | INFO     | common | Proxy label built: high_risk = High/Severe congestion AND severe or low-visibility weather -> 3133 positive hours (7.7%)
+2026-11-13 10:53:40 | INFO     | common | Modelling data ready: 40543 rows, 31 model features
+2026-11-13 10:53:41 | INFO     | common | MLflow tracking at part3_machine_learning/mlflow/mlflow.db, experiment 'traffic_deep_learning'
+2026-11-13 10:53:42 | WARNING  | deep_learning | Sequence windows: 28701 valid 24-hour windows; 11842 hour(s) could not be used as targets because the previous 24 hours were not all recorded (sensor gaps)
+2026-11-13 10:53:43 | INFO     | deep_learning | LSTM architecture: 24x10 sequence -> LSTM(48) -> concat 10 context features -> Dense(32) -> Dense(1); 13249 trainable parameters
+2026-11-13 10:54:25 | INFO     | deep_learning | LSTM trained in 42.1s (80 of max 80 epochs; validation loss still improving at the epoch limit)
+2026-11-13 10:54:27 | INFO     | deep_learning | Next-hour test results (2017-2018) | LSTM                                   MAE= 180.1  R2=0.981
+2026-11-13 10:54:27 | INFO     | deep_learning | Next-hour test results (2017-2018) | Naive: same as previous hour           MAE= 592.3  R2=0.826
+2026-11-13 10:54:27 | INFO     | deep_learning | Next-hour test results (2017-2018) | Naive: same hour yesterday             MAE= 561.4  R2=0.732
+2026-11-13 10:54:27 | INFO     | deep_learning | Next-hour test results (2017-2018) | Tree model with lag features (SHAP)    MAE= 154.0  R2=0.986
+2026-11-13 10:54:27 | INFO     | common | Saved part3_machine_learning/models/lstm_scaling.json
+2026-11-13 10:54:27 | INFO     | deep_learning | Saved LSTM model lstm_next_hour.keras (0.20 MB) and comparable tree model
+2026-11-13 10:54:28 | INFO     | deep_learning | Saved figure: notebooks/outputs/lstm_training_and_forecast.png
+2026-11-13 10:54:30 | INFO     | deep_learning | LSTM permutation importance (MAE increase when shuffled), top 5: target hour: hour_cos +1101, sequence: volume_scaled +1010, sequence: hour_sin +520, sequence: hour_cos +518, target hour: hour_sin +508
+2026-11-13 10:54:32 | INFO     | deep_learning | SHAP mean |value| (vehicles/hour), top 5: lag_1h 1209, hour_cos 496, change_last_hour 259, hour 88, lag_24h 72
+2026-11-13 10:54:34 | INFO     | deep_learning | Saved figures: shap_summary_next_hour.png, shap_waterfall_example.png
+2026-11-13 10:54:34 | INFO     | common | Chronological split: train 25297 rows (2012-2016), test 15246 rows (2017-2018)
+2026-11-13 10:54:34 | INFO     | deep_learning | LIME high_risk_fog_morning (2017-01-17 09:00:00): P(high risk)=1.00; top reasons: weather_severity > 4.00 (+0.43); weather_rain <= 0.00 (+0.16); hour_cos <= -0.71 (+0.15)
+2026-11-13 10:54:34 | INFO     | deep_learning | LIME low_risk_fog_night (2017-01-19 00:00:00): P(high risk)=0.00; top reasons: weather_severity > 4.00 (+0.42); hour_cos > 0.71 (-0.16); weather_rain <= 0.00 (+0.15)
+2026-11-13 10:54:34 | INFO     | deep_learning | Saved figure: notebooks/outputs/lime_risk_classifier.png
+2026-11-13 10:54:34 | INFO     | common | Saved part3_machine_learning/notebooks/outputs/deep_learning_results.json
+2026-11-13 10:54:36 | INFO     | run_part3 | Finished notebooks/deep_learning.py in 58.5s
+2026-11-13 10:54:36 | INFO     | run_part3 | Running recommendation_system/recommender.py --write-samples
+2026-11-13 10:54:37 | INFO     | common | Loaded Part 2 feature table: 40575 rows x 54 columns
+2026-11-13 10:54:37 | WARNING  | common | Dropped 32 hour(s) flagged as sensor faults in Part 2 (volume is not a real traffic reading)
+2026-11-13 10:54:37 | INFO     | common | Proxy label built: high_risk = High/Severe congestion AND severe or low-visibility weather -> 3133 positive hours (7.7%)
+2026-11-13 10:54:37 | INFO     | common | Modelling data ready: 40543 rows, 31 model features
+2026-11-13 10:54:37 | INFO     | recommender | Recommender ready: champion models loaded, history from 40543 hours
+2026-11-13 10:54:37 | INFO     | recommender | Recommendation (weekday, Clear, 20.3°C, month 6, 06-21h, 1h trip): best 21:00, avoid 16:00
+2026-11-13 10:54:37 | INFO     | recommender | Recommendation (weekday, Clear, 20.3°C, month 6, 07-18h, 1h trip): best 10:00, avoid 16:00
+2026-11-13 10:54:37 | INFO     | recommender | Recommendation (Friday, Snow, -7.7°C, month 1, 14-20h, 1h trip): best 20:00, avoid 16:00
+2026-11-13 10:54:37 | INFO     | recommender | Recommendation (weekend, Rain, 20.3°C, month 6, 06-21h, 2h trip): best 06:00, avoid 13:00
+2026-11-13 10:54:37 | INFO     | recommender | Recommendation (Monday, Fog, 2.3°C, month 11, 05-11h, 1h trip): best 05:00, avoid 07:00
+2026-11-13 10:54:37 | INFO     | recommender | Recommendation (holiday, Clear, 20.3°C, month 6, 06-21h, 1h trip): best 08:00, avoid 16:00
+2026-11-13 10:54:37 | INFO     | recommender | Saved 6 sample recommendations to sample_recommendations.md
+2026-11-13 10:54:37 | INFO     | run_part3 | Finished recommendation_system/recommender.py --write-samples in 1.7s
+2026-11-13 10:54:37 | INFO     | run_part3 | Running monitoring/monitor.py
+2026-11-13 10:54:39 | INFO     | common | Loaded Part 2 feature table: 40575 rows x 54 columns
+2026-11-13 10:54:39 | WARNING  | common | Dropped 32 hour(s) flagged as sensor faults in Part 2 (volume is not a real traffic reading)
+2026-11-13 10:54:39 | INFO     | common | Proxy label built: high_risk = High/Severe congestion AND severe or low-visibility weather -> 3133 positive hours (7.7%)
+2026-11-13 10:54:39 | INFO     | common | Modelling data ready: 40543 rows, 31 model features
+2026-11-13 10:54:40 | INFO     | monitor | Monitoring champion model: error reference 2017 (8713 hours), feature normals 2016-2017 (16522 hours), production 2018 (6533 hours)
+2026-11-13 10:54:40 | INFO     | monitor | Monitoring PASS for 2018-01: MAE 313 (reference 259), max PSI 0.21 (moderate shift: PSI(temp_c) = 0.13; moderate shift: PSI(clouds_all) = 0.21; moderate shift: PSI(weather_main) = 0.21)
+2026-11-13 10:54:40 | WARNING  | monitor | MONITORING ALERT for 2018-02: feature drift: PSI(temp_c) = 0.78 > 0.25
+2026-11-13 10:54:40 | WARNING  | monitor | MONITORING ALERT for 2018-03: feature drift: PSI(temp_c) = 1.11 > 0.25; feature drift: PSI(weather_main) = 0.26 > 0.25
+2026-11-13 10:54:40 | WARNING  | monitor | MONITORING ALERT for 2018-04: prediction error drift: MAE 324 vs reference 208 (+56%, limit +25%); feature drift: PSI(temp_c) = 0.97 > 0.25; feature drift: PSI(weather_main) = 0.61 > 0.25
+2026-11-13 10:54:40 | WARNING  | monitor | MONITORING ALERT for 2018-05: feature drift: PSI(temp_c) = 0.50 > 0.25
+2026-11-13 10:54:40 | WARNING  | monitor | MONITORING ALERT for 2018-06: feature drift: PSI(clouds_all) = 0.32 > 0.25
+2026-11-13 10:54:40 | INFO     | monitor | Monitoring PASS for 2018-07: MAE 214 (reference 250), max PSI 0.13 (moderate shift: PSI(weather_main) = 0.13)
+2026-11-13 10:54:40 | INFO     | monitor | Monitoring PASS for 2018-08: MAE 181 (reference 203), max PSI 0.18 (moderate shift: PSI(temp_c) = 0.17; moderate shift: PSI(weather_main) = 0.18)
+2026-11-13 10:54:40 | INFO     | monitor | Monitoring PASS for 2018-09: MAE 186 (reference 221), max PSI 0.19 (moderate shift: PSI(temp_c) = 0.14; moderate shift: PSI(weather_main) = 0.19)
+2026-11-13 10:54:40 | WARNING  | monitor | MONITORING ALERT for SIM sensor_fault: prediction error drift: MAE 1279 vs reference 221 (+479%, limit +25%)
+2026-11-13 10:54:40 | WARNING  | monitor | MONITORING ALERT for SIM temperature_shift: feature drift: PSI(temp_c) = 2.34 > 0.25
+2026-11-13 10:54:40 | INFO     | monitor | Overall status (real batches): ALERT / Requires investigation; simulated incidents raised 2 alert(s)
+2026-11-13 10:54:40 | INFO     | monitor | Saved monitoring/monitoring_dashboard.png
+2026-11-13 10:54:40 | INFO     | monitor | Saved monitoring/monitoring_report.md
+2026-11-13 10:54:40 | INFO     | common | Saved part3_machine_learning/monitoring/monitoring_status.json
+2026-11-13 10:54:42 | INFO     | common | MLflow tracking at part3_machine_learning/mlflow/mlflow.db, experiment 'traffic_monitoring'
+2026-11-13 10:54:43 | INFO     | run_part3 | Finished monitoring/monitor.py in 5.5s
+2026-11-13 10:54:43 | INFO     | run_part3 | Running deployment/test_api.py
+2026-11-13 10:54:43 | INFO     | app | GET /health -> 200 (2 ms)
+2026-11-13 10:54:43 | INFO     | test_api | GET /health -> 200 (expected 200)
+2026-11-13 10:54:44 | INFO     | common | Loaded Part 2 feature table: 40575 rows x 54 columns
+2026-11-13 10:54:44 | WARNING  | common | Dropped 32 hour(s) flagged as sensor faults in Part 2 (volume is not a real traffic reading)
+2026-11-13 10:54:45 | INFO     | common | Proxy label built: high_risk = High/Severe congestion AND severe or low-visibility weather -> 3133 positive hours (7.7%)
+2026-11-13 10:54:45 | INFO     | common | Modelling data ready: 40543 rows, 31 model features
+2026-11-13 10:54:45 | INFO     | recommender | Recommender ready: champion models loaded, history from 40543 hours
+2026-11-13 10:54:45 | INFO     | app | POST /predict/traffic -> 200 (1168 ms)
+2026-11-13 10:54:45 | INFO     | test_api | POST /predict/traffic -> 200 (expected 200)
+2026-11-13 10:54:45 | INFO     | app | POST /predict/traffic -> 200 (7 ms)
+2026-11-13 10:54:45 | INFO     | test_api | POST /predict/traffic -> 200 (expected 200)
+2026-11-13 10:54:45 | INFO     | app | POST /predict/risk -> 200 (5 ms)
+2026-11-13 10:54:45 | INFO     | test_api | POST /predict/risk -> 200 (expected 200)
+2026-11-13 10:54:45 | INFO     | app | POST /predict/risk -> 200 (5 ms)
+2026-11-13 10:54:45 | INFO     | test_api | POST /predict/risk -> 200 (expected 200)
+2026-11-13 10:54:45 | INFO     | recommender | Recommendation (Friday, Snow, -7.7°C, month 1, 14-20h, 1h trip): best 20:00, avoid 16:00
+2026-11-13 10:54:45 | INFO     | app | POST /recommend -> 200 (16 ms)
+2026-11-13 10:54:45 | INFO     | test_api | POST /recommend -> 200 (expected 200)
+2026-11-13 10:54:45 | WARNING  | app | POST /predict/traffic -> 400 (1 ms)
+2026-11-13 10:54:45 | INFO     | test_api | POST /predict/traffic -> 400 (expected 400)
+2026-11-13 10:54:45 | WARNING  | app | POST /predict/traffic -> 400 (1 ms)
+2026-11-13 10:54:45 | INFO     | test_api | POST /predict/traffic -> 400 (expected 400)
+2026-11-13 10:54:45 | WARNING  | app | POST /predict/traffic -> 422 (1 ms)
+2026-11-13 10:54:45 | INFO     | test_api | POST /predict/traffic -> 422 (expected 422)
+2026-11-13 10:54:45 | INFO     | test_api | Saved 9 API calls to sample_api_responses.json; 0 failure(s)
+2026-11-13 10:54:45 | INFO     | run_part3 | Finished deployment/test_api.py in 2.2s
+2026-11-13 10:54:45 | INFO     | run_part3 | Running mlflow/export_mlflow_summary.py
+2026-11-13 10:54:47 | INFO     | common | MLflow tracking at part3_machine_learning/mlflow/mlflow.db, experiment 'traffic_supervised_models'
+2026-11-13 10:54:47 | INFO     | export_mlflow_summary | Exported 4 experiments and 11 runs to mlflow/MLFLOW_SUMMARY.md
+2026-11-13 10:54:48 | INFO     | run_part3 | Finished mlflow/export_mlflow_summary.py in 2.5s
+2026-11-13 10:54:48 | INFO     | run_part3 | Part 3 rebuilt successfully in 2.1 minutes (126 seconds of compute)

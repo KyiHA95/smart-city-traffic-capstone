@@ -1,0 +1,384 @@
+{
+  "kmeans": {
+    "k": 8,
+    "scores": {
+      "2": {
+        "inertia": 141242.66774108302,
+        "silhouette": 0.2998552485559155
+      },
+      "3": {
+        "inertia": 112597.66814339494,
+        "silhouette": 0.3300676050201316
+      },
+      "4": {
+        "inertia": 96468.23030693593,
+        "silhouette": 0.32620930336709025
+      },
+      "5": {
+        "inertia": 82625.3982534136,
+        "silhouette": 0.3462428475909998
+      },
+      "6": {
+        "inertia": 70083.87760524091,
+        "silhouette": 0.3367673222138302
+      },
+      "7": {
+        "inertia": 60347.48756389986,
+        "silhouette": 0.3612853299768538
+      },
+      "8": {
+        "inertia": 51960.42483037709,
+        "silhouette": 0.3709084715474305
+      },
+      "9": {
+        "inertia": 46022.43271198749,
+        "silhouette": 0.38888350076297695
+      },
+      "10": {
+        "inertia": 41040.05922153025,
+        "silhouette": 0.4075247167823003
+      },
+      "11": {
+        "inertia": 37013.71502342946,
+        "silhouette": 0.4149805273399168
+      },
+      "12": {
+        "inertia": 34418.50912815407,
+        "silhouette": 0.4083104769927351
+      }
+    },
+    "clusters": [
+      {
+        "cluster": 1,
+        "hours": 5690,
+        "share": 0.14034481908097576,
+        "mean_volume": 880.1140597539543,
+        "congested_share": 0.0,
+        "weekend_share": 0.0,
+        "mean_weather_severity": 1.0093145869947275,
+        "bad_weather_share": 0.0,
+        "typical_hour_start": 0.0,
+        "typical_hour_end": 5.0,
+        "most_common_weather": "Clear",
+        "high_risk_share": 0.0,
+        "name": "Quiet weekday 00-05h"
+      },
+      {
+        "cluster": 5,
+        "hours": 4790,
+        "share": 0.11814616579927484,
+        "mean_volume": 1180.081419624217,
+        "congested_share": 0.0,
+        "weekend_share": 1.0,
+        "mean_weather_severity": 1.6488517745302713,
+        "bad_weather_share": 0.10563674321503132,
+        "typical_hour_start": 1.0,
+        "typical_hour_end": 22.0,
+        "most_common_weather": "Clear",
+        "high_risk_share": 0.0006263048016701461,
+        "name": "Quiet weekend all day"
+      },
+      {
+        "cluster": 7,
+        "hours": 3860,
+        "share": 0.0952075574081839,
+        "mean_volume": 1556.332901554404,
+        "congested_share": 0.0,
+        "weekend_share": 0.1976683937823834,
+        "mean_weather_severity": 7.637564766839378,
+        "bad_weather_share": 0.9681347150259068,
+        "typical_hour_start": 1.0,
+        "typical_hour_end": 23.0,
+        "most_common_weather": "Rain",
+        "high_risk_share": 0.013730569948186529,
+        "name": "Moderate weekday all day in bad weather"
+      },
+      {
+        "cluster": 4,
+        "hours": 4763,
+        "share": 0.11748020620082382,
+        "mean_volume": 2548.087129960109,
+        "congested_share": 0.0,
+        "weekend_share": 0.0,
+        "mean_weather_severity": 0.6615578416964099,
+        "bad_weather_share": 0.0,
+        "typical_hour_start": 19.0,
+        "typical_hour_end": 23.0,
+        "most_common_weather": "Clouds",
+        "high_risk_share": 0.003149275666596683,
+        "name": "Moderate weekday 19-23h"
+      },
+      {
+        "cluster": 0,
+        "hours": 5357,
+        "share": 0.1321313173667464,
+        "mean_volume": 3897.15008400224,
+        "congested_share": 0.007653537427664738,
+        "weekend_share": 1.0,
+        "mean_weather_severity": 1.1834982266193765,
+        "bad_weather_share": 0.06738846369236513,
+        "typical_hour_start": 10.0,
+        "typical_hour_end": 20.0,
+        "most_common_weather": "Clouds",
+        "high_risk_share": 0.040507746873249956,
+        "name": "Busy weekend 10-20h"
+      },
+      {
+        "cluster": 2,
+        "hours": 4165,
+        "share": 0.10273043435364922,
+        "mean_volume": 4941.579351740696,
+        "congested_share": 0.2845138055222089,
+        "weekend_share": 0.1582232893157263,
+        "mean_weather_severity": 7.549339735894358,
+        "bad_weather_share": 0.9764705882352941,
+        "typical_hour_start": 7.0,
+        "typical_hour_end": 17.0,
+        "most_common_weather": "Rain",
+        "high_risk_share": 0.4151260504201681,
+        "name": "Peak-congestion weekday 07-17h in bad weather"
+      },
+      {
+        "cluster": 6,
+        "hours": 6339,
+        "share": 0.1563525146141134,
+        "mean_volume": 5190.480044171005,
+        "congested_share": 0.34879318504495976,
+        "weekend_share": 0.0,
+        "mean_weather_severity": 1.0444865120681495,
+        "bad_weather_share": 0.0,
+        "typical_hour_start": 6.0,
+        "typical_hour_end": 12.0,
+        "most_common_weather": "Clouds",
+        "high_risk_share": 0.13724562233790819,
+        "name": "Peak-congestion weekday 06-12h"
+      },
+      {
+        "cluster": 3,
+        "hours": 5579,
+        "share": 0.13760698517623265,
+        "mean_volume": 5440.403477325685,
+        "congested_share": 0.47858039075103065,
+        "weekend_share": 0.0,
+        "mean_weather_severity": 0.774332317619645,
+        "bad_weather_share": 0.0,
+        "typical_hour_start": 13.0,
+        "typical_hour_end": 18.0,
+        "most_common_weather": "Clouds",
+        "high_risk_share": 0.04409392364222979,
+        "name": "Peak-congestion weekday 13-18h"
+      }
+    ]
+  },
+  "association_rules": {
+    "n_rules": 42,
+    "top_rules": [
+      {
+        "antecedents": "Day=Weekday AND Temp=Cold AND Time=AM peak (06-09)",
+        "consequents": "Congestion=Severe",
+        "support": 0.0232,
+        "confidence": 0.9199,
+        "lift": 3.6803,
+        "plain_language": "When it is Weekday and Cold and AM peak (06-09), congestion is Severe in 92% of hours, 3.7 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Day=Weekend AND Temp=Warm AND Time=PM peak (15-18)",
+        "consequents": "Congestion=High",
+        "support": 0.0164,
+        "confidence": 0.9172,
+        "lift": 3.67,
+        "plain_language": "When it is Weekend and Warm and PM peak (15-18), congestion is High in 92% of hours, 3.7 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Day=Weekday AND Temp=Mild AND Time=AM peak (06-09)",
+        "consequents": "Congestion=Severe",
+        "support": 0.0348,
+        "confidence": 0.9044,
+        "lift": 3.6183,
+        "plain_language": "When it is Weekday and Mild and AM peak (06-09), congestion is Severe in 90% of hours, 3.6 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Day=Weekday AND Time=AM peak (06-09) AND Weather=Low visibility",
+        "consequents": "Congestion=Severe",
+        "support": 0.0151,
+        "confidence": 0.9038,
+        "lift": 3.616,
+        "plain_language": "When it is Weekday and AM peak (06-09) and Low visibility, congestion is Severe in 90% of hours, 3.6 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Day=Weekend AND Temp=Freezing AND Time=Night (23-05)",
+        "consequents": "Congestion=Low",
+        "support": 0.024,
+        "confidence": 0.8848,
+        "lift": 3.5389,
+        "plain_language": "When it is Weekend and Freezing and Night (23-05), congestion is Low in 88% of hours, 3.5 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Day=Weekday AND Time=AM peak (06-09) AND Weather=Rain/drizzle",
+        "consequents": "Congestion=Severe",
+        "support": 0.013,
+        "confidence": 0.8842,
+        "lift": 3.5375,
+        "plain_language": "When it is Weekday and AM peak (06-09) and Rain/drizzle, congestion is Severe in 88% of hours, 3.5 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Temp=Freezing AND Time=Evening (19-22)",
+        "consequents": "Congestion=Medium",
+        "support": 0.0387,
+        "confidence": 0.8801,
+        "lift": 3.519,
+        "plain_language": "When it is Freezing and Evening (19-22), congestion is Medium in 88% of hours, 3.5 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Time=Evening (19-22) AND Weather=Severe weather",
+        "consequents": "Congestion=Medium",
+        "support": 0.0131,
+        "confidence": 0.8795,
+        "lift": 3.5167,
+        "plain_language": "When it is Evening (19-22) and Severe weather, congestion is Medium in 88% of hours, 3.5 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Day=Weekend AND Temp=Warm AND Time=Midday (10-14)",
+        "consequents": "Congestion=High",
+        "support": 0.0162,
+        "confidence": 0.8762,
+        "lift": 3.5056,
+        "plain_language": "When it is Weekend and Warm and Midday (10-14), congestion is High in 88% of hours, 3.5 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Time=Evening (19-22) AND Weather=Rain/drizzle",
+        "consequents": "Congestion=Medium",
+        "support": 0.018,
+        "confidence": 0.8743,
+        "lift": 3.4955,
+        "plain_language": "When it is Evening (19-22) and Rain/drizzle, congestion is Medium in 87% of hours, 3.5 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Temp=Mild AND Time=Evening (19-22)",
+        "consequents": "Congestion=Medium",
+        "support": 0.0348,
+        "confidence": 0.8663,
+        "lift": 3.4636,
+        "plain_language": "When it is Mild and Evening (19-22), congestion is Medium in 87% of hours, 3.5 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Day=Weekend AND Time=PM peak (15-18)",
+        "consequents": "Congestion=High",
+        "support": 0.0403,
+        "confidence": 0.8545,
+        "lift": 3.4187,
+        "plain_language": "When it is Weekend and PM peak (15-18), congestion is High in 85% of hours, 3.4 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Day=Weekday AND Time=AM peak (06-09)",
+        "consequents": "Congestion=Severe",
+        "support": 0.0956,
+        "confidence": 0.8484,
+        "lift": 3.3944,
+        "plain_language": "When it is Weekday and AM peak (06-09), congestion is Severe in 85% of hours, 3.4 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Time=Evening (19-22)",
+        "consequents": "Congestion=Medium",
+        "support": 0.1415,
+        "confidence": 0.8428,
+        "lift": 3.3697,
+        "plain_language": "When it is Evening (19-22), congestion is Medium in 84% of hours, 3.4 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Time=Night (23-05) AND Weather=Severe weather",
+        "consequents": "Congestion=Low",
+        "support": 0.0241,
+        "confidence": 0.8301,
+        "lift": 3.3202,
+        "plain_language": "When it is Night (23-05) and Severe weather, congestion is Low in 83% of hours, 3.3 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Day=Weekend AND Time=Night (23-05)",
+        "consequents": "Congestion=Low",
+        "support": 0.069,
+        "confidence": 0.8223,
+        "lift": 3.289,
+        "plain_language": "When it is Weekend and Night (23-05), congestion is Low in 82% of hours, 3.3 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Temp=Freezing AND Time=Night (23-05)",
+        "consequents": "Congestion=Low",
+        "support": 0.0777,
+        "confidence": 0.8218,
+        "lift": 3.287,
+        "plain_language": "When it is Freezing and Night (23-05), congestion is Low in 82% of hours, 3.3 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Day=Weekend AND Time=Midday (10-14) AND Weather=Cloudy",
+        "consequents": "Congestion=High",
+        "support": 0.0213,
+        "confidence": 0.8079,
+        "lift": 3.2324,
+        "plain_language": "When it is Weekend and Midday (10-14) and Cloudy, congestion is High in 81% of hours, 3.2 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Time=Night (23-05)",
+        "consequents": "Congestion=Low",
+        "support": 0.2353,
+        "confidence": 0.8003,
+        "lift": 3.2013,
+        "plain_language": "When it is Night (23-05), congestion is Low in 80% of hours, 3.2 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Day=Weekend AND Time=Midday (10-14)",
+        "consequents": "Congestion=High",
+        "support": 0.047,
+        "confidence": 0.7906,
+        "lift": 3.1634,
+        "plain_language": "When it is Weekend and Midday (10-14), congestion is High in 79% of hours, 3.2 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Day=Weekday AND Temp=Mild AND Time=PM peak (15-18)",
+        "consequents": "Congestion=Severe",
+        "support": 0.0173,
+        "confidence": 0.7855,
+        "lift": 3.1424,
+        "plain_language": "When it is Weekday and Mild and PM peak (15-18), congestion is Severe in 79% of hours, 3.1 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Day=Weekday AND Time=PM peak (15-18) AND Weather=Cloudy",
+        "consequents": "Congestion=Severe",
+        "support": 0.042,
+        "confidence": 0.7638,
+        "lift": 3.0557,
+        "plain_language": "When it is Weekday and PM peak (15-18) and Cloudy, congestion is Severe in 76% of hours, 3.1 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Day=Weekday AND Temp=Warm AND Time=PM peak (15-18)",
+        "consequents": "Congestion=Severe",
+        "support": 0.0325,
+        "confidence": 0.7602,
+        "lift": 3.0414,
+        "plain_language": "When it is Weekday and Warm and PM peak (15-18), congestion is Severe in 76% of hours, 3.0 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Day=Weekday AND Time=PM peak (15-18)",
+        "consequents": "Congestion=Severe",
+        "support": 0.0844,
+        "confidence": 0.7433,
+        "lift": 2.9736,
+        "plain_language": "When it is Weekday and PM peak (15-18), congestion is Severe in 74% of hours, 3.0 times more often than the 25% seen overall."
+      },
+      {
+        "antecedents": "Time=Midday (10-14) AND Weather=Severe weather",
+        "consequents": "Congestion=High",
+        "support": 0.0126,
+        "confidence": 0.6878,
+        "lift": 2.7518,
+        "plain_language": "When it is Midday (10-14) and Severe weather, congestion is High in 69% of hours, 2.8 times more often than the 25% seen overall."
+      }
+    ],
+    "base_rates": {
+      "Medium": 0.25010482697383024,
+      "Low": 0.25000616629257827,
+      "Severe": 0.24995683595195226,
+      "High": 0.24993217078163923
+    }
+  }
+}
