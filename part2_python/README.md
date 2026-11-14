@@ -34,7 +34,7 @@ The raw dataset is read from the shared `data/` folder at the repository root (`
 
 ## 2. How to run
 
-Python 3.10 or newer is required.
+Python 3.12 or newer is required. `requirements.txt` pins the exact library versions used to produce the committed outputs.
 
 ```bash
 cd part2_python

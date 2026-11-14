@@ -17,7 +17,7 @@ smart-city-traffic-capstone/
 │
 ├── part1_data_analytics/                     Part 1: SQL, statistics, probability, Power BI
 │   ├── sql/                traffic_analysis.sql (load + all queries), traffic.db
-│   ├── statistics/         statistical_probability_analysis.md
+│   ├── statistics/         statistical_probability_analysis.md, stats_probability_analysis.py (reproduces Tasks 2-3)
 │   ├── powerbi/            traffic_dashboard.pbix / .pdf, data-quality screenshots, powerbi_notes.md
 │   └── insights_report.pdf 2-page Data Analytics Insights Report
 │
@@ -64,12 +64,17 @@ smart-city-traffic-capstone/
 
 ## How to run
 
-Requirements: Python 3.10+; Power BI Desktop (Windows) to open the dashboard; the `sqlite3` shell or DB Browser for SQLite for the SQL file.
+Requirements: Python 3.12+ (the pinned library versions in each part's `requirements.txt` need it); Power BI Desktop (Windows) to open the dashboard; the `sqlite3` shell or DB Browser for SQLite for the SQL file.
 
 ```bash
 # Part 1: rebuild the SQLite database and run every query
 cd part1_data_analytics/sql
 sqlite3 traffic.db < traffic_analysis.sql
+
+# Part 1: reproduce the statistics and probability results (Tasks 2-3)
+cd ../statistics
+pip install -r requirements.txt
+python stats_probability_analysis.py
 
 # Part 2: run the full pipeline, then query it with the CLI
 cd part2_python
