@@ -1,2 +1,12 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Binary files: never convert line endings (prevents corrupted PDFs and models on Windows)
+*.pdf binary
+*.pbix binary
+*.db binary
+*.png binary
+*.jpg binary
+*.joblib binary
+*.keras binary
+*.gz binary
