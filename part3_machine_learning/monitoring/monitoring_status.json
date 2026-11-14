@@ -1,0 +1,272 @@
+{
+  "overall_status": "ALERT / Requires investigation",
+  "batches": [
+    {
+      "batch": "2018-01",
+      "hours": 742,
+      "status": "PASS",
+      "action": "None",
+      "mean_temp_c": -8.913315363881402,
+      "normal_temp_c": -7.155244813278008,
+      "label": "PASS / Normal",
+      "mae": 313.31883911187026,
+      "reference_mae": 259.1995771153364,
+      "mae_ratio": 1.2087937897076597,
+      "psi_temp_c": 0.12875621974268,
+      "psi_clouds_all": 0.20750254091616366,
+      "psi_predicted_volume": 0.006489651144554905,
+      "psi_weather_main": 0.20656563559176905,
+      "reasons": [],
+      "notes": [
+        "moderate shift: PSI(temp_c) = 0.13",
+        "moderate shift: PSI(clouds_all) = 0.21",
+        "moderate shift: PSI(weather_main) = 0.21"
+      ]
+    },
+    {
+      "batch": "2018-02",
+      "hours": 672,
+      "status": "ALERT",
+      "action": "Watch: inputs are unusual but accuracy is within limits",
+      "mean_temp_c": -9.369717261904762,
+      "normal_temp_c": -2.8572813036020586,
+      "label": "ALERT / Requires investigation",
+      "mae": 261.7839860512539,
+      "reference_mae": 233.17688519341786,
+      "mae_ratio": 1.1226841195434392,
+      "psi_temp_c": 0.7849577543556713,
+      "psi_clouds_all": 0.03128758589135069,
+      "psi_predicted_volume": 0.010009076505460653,
+      "psi_weather_main": 0.22327774254434413,
+      "reasons": [
+        "feature drift: PSI(temp_c) = 0.78 > 0.25"
+      ],
+      "notes": [
+        "moderate shift: PSI(weather_main) = 0.22"
+      ],
+      "worst_days": [
+        "2018-02-24: Snow, actual 2,401 vs predicted 2,756 vehicles/hour",
+        "2018-02-02: Clear, actual 3,841 vs predicted 3,458 vehicles/hour",
+        "2018-02-19: Snow, actual 2,456 vs predicted 2,741 vehicles/hour"
+      ]
+    },
+    {
+      "batch": "2018-03",
+      "hours": 733,
+      "status": "ALERT",
+      "action": "Watch: inputs are unusual but accuracy is within limits",
+      "mean_temp_c": -0.3533424283765348,
+      "normal_temp_c": 2.021435643564357,
+      "label": "ALERT / Requires investigation",
+      "mae": 226.6528706754239,
+      "reference_mae": 211.34913315515075,
+      "mae_ratio": 1.072409748229432,
+      "psi_temp_c": 1.1142447225136498,
+      "psi_clouds_all": 0.056412285393575144,
+      "psi_predicted_volume": 0.004702066095742414,
+      "psi_weather_main": 0.26231729146174226,
+      "reasons": [
+        "feature drift: PSI(temp_c) = 1.11 > 0.25",
+        "feature drift: PSI(weather_main) = 0.26 > 0.25"
+      ],
+      "notes": [],
+      "worst_days": [
+        "2018-03-05: Snow, actual 2,373 vs predicted 3,373 vehicles/hour",
+        "2018-03-31: Snow, actual 2,604 vs predicted 2,994 vehicles/hour",
+        "2018-03-24: Clear, actual 4,033 vs predicted 3,700 vehicles/hour"
+      ]
+    },
+    {
+      "batch": "2018-04",
+      "hours": 720,
+      "status": "ALERT",
+      "action": "Investigate now: accuracy has degraded",
+      "mean_temp_c": 2.5038611111111106,
+      "normal_temp_c": 8.932606707317072,
+      "label": "ALERT / Requires investigation",
+      "mae": 323.94382284262116,
+      "reference_mae": 207.61333674829737,
+      "mae_ratio": 1.5603227996636773,
+      "psi_temp_c": 0.9743175555563454,
+      "psi_clouds_all": 0.11885020025323018,
+      "psi_predicted_volume": 0.011301711462871549,
+      "psi_weather_main": 0.6139329764515278,
+      "reasons": [
+        "prediction error drift: MAE 324 vs reference 208 (+56%, limit +25%)",
+        "feature drift: PSI(temp_c) = 0.97 > 0.25",
+        "feature drift: PSI(weather_main) = 0.61 > 0.25"
+      ],
+      "notes": [
+        "moderate shift: PSI(clouds_all) = 0.12"
+      ],
+      "worst_days": [
+        "2018-04-14: Snow, actual 1,144 vs predicted 3,002 vehicles/hour",
+        "2018-04-15: Snow, actual 1,238 vs predicted 2,225 vehicles/hour",
+        "2018-04-03: Snow, actual 2,719 vs predicted 3,529 vehicles/hour"
+      ]
+    },
+    {
+      "batch": "2018-05",
+      "hours": 743,
+      "status": "ALERT",
+      "action": "Watch: inputs are unusual but accuracy is within limits",
+      "mean_temp_c": 18.839730820995964,
+      "normal_temp_c": 14.553401639344262,
+      "label": "ALERT / Requires investigation",
+      "mae": 183.9711158070009,
+      "reference_mae": 195.73191094741293,
+      "mae_ratio": 0.9399137571207191,
+      "psi_temp_c": 0.4988309335996232,
+      "psi_clouds_all": 0.17325900680966116,
+      "psi_predicted_volume": 0.005190708953348345,
+      "psi_weather_main": 0.1433846194180065,
+      "reasons": [
+        "feature drift: PSI(temp_c) = 0.50 > 0.25"
+      ],
+      "notes": [
+        "moderate shift: PSI(clouds_all) = 0.17",
+        "moderate shift: PSI(weather_main) = 0.14"
+      ],
+      "worst_days": [
+        "2018-05-28: Clear, actual 2,136 vs predicted 2,418 vehicles/hour",
+        "2018-05-20: Clear, actual 2,332 vs predicted 2,552 vehicles/hour",
+        "2018-05-25: Thunderstorm, actual 3,596 vs predicted 3,837 vehicles/hour"
+      ]
+    },
+    {
+      "batch": "2018-06",
+      "hours": 719,
+      "status": "ALERT",
+      "action": "Watch: inputs are unusual but accuracy is within limits",
+      "mean_temp_c": 21.822308762169676,
+      "normal_temp_c": 20.636636427076066,
+      "label": "ALERT / Requires investigation",
+      "mae": 172.54929402050666,
+      "reference_mae": 190.13920905399402,
+      "mae_ratio": 0.907489280506619,
+      "psi_temp_c": 0.1475365377372275,
+      "psi_clouds_all": 0.3155424715211604,
+      "psi_predicted_volume": 0.0031958901374742076,
+      "psi_weather_main": 0.1410964395856481,
+      "reasons": [
+        "feature drift: PSI(clouds_all) = 0.32 > 0.25"
+      ],
+      "notes": [
+        "moderate shift: PSI(temp_c) = 0.15",
+        "moderate shift: PSI(weather_main) = 0.14"
+      ],
+      "worst_days": [
+        "2018-06-09: Thunderstorm, actual 2,668 vs predicted 2,928 vehicles/hour",
+        "2018-06-10: Clouds, actual 2,272 vs predicted 2,580 vehicles/hour",
+        "2018-06-22: Clear, actual 3,904 vs predicted 3,823 vehicles/hour"
+      ]
+    },
+    {
+      "batch": "2018-07",
+      "hours": 744,
+      "status": "PASS",
+      "action": "None",
+      "mean_temp_c": 22.519247311827957,
+      "normal_temp_c": 22.489330572808836,
+      "label": "PASS / Normal",
+      "mae": 213.5139225625807,
+      "reference_mae": 249.97777256473307,
+      "mae_ratio": 0.8541316308724614,
+      "psi_temp_c": 0.02922084991036626,
+      "psi_clouds_all": 0.06420962588485164,
+      "psi_predicted_volume": 0.007560413901485898,
+      "psi_weather_main": 0.13227794008139632,
+      "reasons": [],
+      "notes": [
+        "moderate shift: PSI(weather_main) = 0.13"
+      ]
+    },
+    {
+      "batch": "2018-08",
+      "hours": 740,
+      "status": "PASS",
+      "action": "None",
+      "mean_temp_c": 21.75828378378378,
+      "normal_temp_c": 20.26608754208754,
+      "label": "PASS / Normal",
+      "mae": 181.15037520708182,
+      "reference_mae": 202.63852571195818,
+      "mae_ratio": 0.893958217326251,
+      "psi_temp_c": 0.1690912055482925,
+      "psi_clouds_all": 0.008062506881622503,
+      "psi_predicted_volume": 0.004070676496521134,
+      "psi_weather_main": 0.17891499485300585,
+      "reasons": [],
+      "notes": [
+        "moderate shift: PSI(temp_c) = 0.17",
+        "moderate shift: PSI(weather_main) = 0.18"
+      ]
+    },
+    {
+      "batch": "2018-09",
+      "hours": 720,
+      "status": "PASS",
+      "action": "None",
+      "mean_temp_c": 17.412583333333334,
+      "normal_temp_c": 17.877300140252455,
+      "label": "PASS / Normal",
+      "mae": 186.3513435837645,
+      "reference_mae": 220.85199830644675,
+      "mae_ratio": 0.8437838236138108,
+      "psi_temp_c": 0.1417691515518155,
+      "psi_clouds_all": 0.04565571327878818,
+      "psi_predicted_volume": 0.0034645779514879947,
+      "psi_weather_main": 0.1873412335621552,
+      "reasons": [],
+      "notes": [
+        "moderate shift: PSI(temp_c) = 0.14",
+        "moderate shift: PSI(weather_main) = 0.19"
+      ]
+    },
+    {
+      "batch": "SIM sensor_fault",
+      "hours": 720,
+      "status": "ALERT",
+      "action": "Investigate now: accuracy has degraded",
+      "mean_temp_c": 17.412583333333334,
+      "normal_temp_c": 17.877300140252455,
+      "label": "ALERT / Requires investigation",
+      "mae": 1279.394974699419,
+      "reference_mae": 220.85199830644675,
+      "mae_ratio": 5.792997050106714,
+      "psi_temp_c": 0.1417691515518155,
+      "psi_clouds_all": 0.04565571327878818,
+      "psi_predicted_volume": 0.0034645779514879947,
+      "psi_weather_main": 0.1873412335621552,
+      "reasons": [
+        "prediction error drift: MAE 1279 vs reference 221 (+479%, limit +25%)"
+      ],
+      "notes": [
+        "moderate shift: PSI(temp_c) = 0.14",
+        "moderate shift: PSI(weather_main) = 0.19"
+      ]
+    },
+    {
+      "batch": "SIM temperature_shift",
+      "hours": 720,
+      "status": "ALERT",
+      "action": "Watch: inputs are unusual but accuracy is within limits",
+      "mean_temp_c": 27.412583333333334,
+      "normal_temp_c": 17.877300140252455,
+      "label": "ALERT / Requires investigation",
+      "mae": 215.38593144016704,
+      "reference_mae": 220.85199830644675,
+      "mae_ratio": 0.9752500909740687,
+      "psi_temp_c": 2.3414096164615996,
+      "psi_clouds_all": 0.04565571327878818,
+      "psi_predicted_volume": 0.011062318140712613,
+      "psi_weather_main": 0.1873412335621552,
+      "reasons": [
+        "feature drift: PSI(temp_c) = 2.34 > 0.25"
+      ],
+      "notes": [
+        "moderate shift: PSI(weather_main) = 0.19"
+      ]
+    }
+  ]
+}

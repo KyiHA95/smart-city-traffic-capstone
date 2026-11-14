@@ -1,0 +1,249 @@
+[
+  {
+    "request": {
+      "method": "GET",
+      "path": "/health",
+      "body": null
+    },
+    "status": 200,
+    "response": {
+      "status": "ok",
+      "models": {
+        "regression": {
+          "registered_model": "traffic_volume_regressor",
+          "version": 3,
+          "algorithm": "HistGradientBoostingRegressor"
+        },
+        "classification": {
+          "registered_model": "proxy_risk_classifier",
+          "version": 3,
+          "algorithm": "HistGradientBoostingClassifier"
+        }
+      }
+    }
+  },
+  {
+    "request": {
+      "method": "POST",
+      "path": "/predict/traffic",
+      "body": {
+        "datetime": "2018-10-02 08:00",
+        "weather": "Clear",
+        "temp_c": 10.0
+      }
+    },
+    "status": 200,
+    "response": {
+      "datetime": "2018-10-02 08:00",
+      "predicted_volume": 5800,
+      "congestion_category": "Severe",
+      "congested_over_5500": true,
+      "model": {
+        "registered_model": "traffic_volume_regressor",
+        "version": 3,
+        "algorithm": "HistGradientBoostingRegressor"
+      }
+    }
+  },
+  {
+    "request": {
+      "method": "POST",
+      "path": "/predict/traffic",
+      "body": {
+        "datetime": "2018-10-06 03:00",
+        "weather": "Clouds",
+        "temp_c": 6.0
+      }
+    },
+    "status": 200,
+    "response": {
+      "datetime": "2018-10-06 03:00",
+      "predicted_volume": 445,
+      "congestion_category": "Low",
+      "congested_over_5500": false,
+      "model": {
+        "registered_model": "traffic_volume_regressor",
+        "version": 3,
+        "algorithm": "HistGradientBoostingRegressor"
+      }
+    }
+  },
+  {
+    "request": {
+      "method": "POST",
+      "path": "/predict/risk",
+      "body": {
+        "datetime": "2018-01-16 07:00",
+        "weather": "Fog",
+        "temp_c": -5.0
+      }
+    },
+    "status": 200,
+    "response": {
+      "datetime": "2018-01-16 07:00",
+      "proxy_risk_probability": 0.991,
+      "high_risk": true,
+      "note": "high_risk is a documented proxy (heavy congestion during severe or low-visibility weather), not a prediction of real accidents",
+      "model": {
+        "registered_model": "proxy_risk_classifier",
+        "version": 3,
+        "algorithm": "HistGradientBoostingClassifier"
+      }
+    }
+  },
+  {
+    "request": {
+      "method": "POST",
+      "path": "/predict/risk",
+      "body": {
+        "datetime": "2018-01-20 02:00",
+        "weather": "Fog",
+        "temp_c": -5.0
+      }
+    },
+    "status": 200,
+    "response": {
+      "datetime": "2018-01-20 02:00",
+      "proxy_risk_probability": 0.0,
+      "high_risk": false,
+      "note": "high_risk is a documented proxy (heavy congestion during severe or low-visibility weather), not a prediction of real accidents",
+      "model": {
+        "registered_model": "proxy_risk_classifier",
+        "version": 3,
+        "algorithm": "HistGradientBoostingClassifier"
+      }
+    }
+  },
+  {
+    "request": {
+      "method": "POST",
+      "path": "/recommend",
+      "body": {
+        "day": "Friday",
+        "weather": "Snow",
+        "month": 1,
+        "earliest": 14,
+        "latest": 20
+      }
+    },
+    "status": 200,
+    "response": {
+      "request": {
+        "day": "Friday",
+        "weather": "Snow",
+        "temp_c": -7.7,
+        "month": 1,
+        "earliest": 14,
+        "latest": 20,
+        "duration": 1
+      },
+      "recommendation": "For a Friday journey in snow, consider travelling between 20:00 and 21:00, when traffic is expected to be around 2,661 vehicles per hour and 0% of comparable past hours were congested. Good alternatives: 18:00 and 19:00. Avoid 16:00 and 17:00: traffic is expected to reach about 6,014 vehicles per hour and 90% of comparable past hours were congested, so your recommended window carries about 56% less traffic. Snow reduces visibility or grip, so allow extra time and stay clear of the busiest hours, where the proxy risk is highest.",
+      "best_window": "20:00-21:00",
+      "alternatives": [
+        "18:00-19:00"
+      ],
+      "avoid_window": "16:00-17:00",
+      "hourly": [
+        {
+          "hour": 14,
+          "predicted_volume": 5228,
+          "historical_congested_share": 0.525,
+          "proxy_risk_probability": 0.999
+        },
+        {
+          "hour": 15,
+          "predicted_volume": 5706,
+          "historical_congested_share": 0.849,
+          "proxy_risk_probability": 0.999
+        },
+        {
+          "hour": 16,
+          "predicted_volume": 6014,
+          "historical_congested_share": 0.898,
+          "proxy_risk_probability": 0.999
+        },
+        {
+          "hour": 17,
+          "predicted_volume": 5537,
+          "historical_congested_share": 0.633,
+          "proxy_risk_probability": 0.998
+        },
+        {
+          "hour": 18,
+          "predicted_volume": 4202,
+          "historical_congested_share": 0.004,
+          "proxy_risk_probability": 0.997
+        },
+        {
+          "hour": 19,
+          "predicted_volume": 3159,
+          "historical_congested_share": 0.0,
+          "proxy_risk_probability": 0.777
+        },
+        {
+          "hour": 20,
+          "predicted_volume": 2661,
+          "historical_congested_share": 0.0,
+          "proxy_risk_probability": 0.135
+        }
+      ]
+    }
+  },
+  {
+    "request": {
+      "method": "POST",
+      "path": "/predict/traffic",
+      "body": {
+        "datetime": "2018-13-45 25:00",
+        "weather": "Clear",
+        "temp_c": 10.0
+      }
+    },
+    "status": 400,
+    "response": {
+      "detail": "Malformed datetime '2018-13-45 25:00'. Use YYYY-MM-DD HH:MM"
+    }
+  },
+  {
+    "request": {
+      "method": "POST",
+      "path": "/predict/traffic",
+      "body": {
+        "datetime": "2018-10-02 08:00",
+        "weather": "Tornado",
+        "temp_c": 10.0
+      }
+    },
+    "status": 400,
+    "response": {
+      "detail": "Unknown weather 'Tornado'. Choose from: Clear, Clouds, Drizzle, Fog, Haze, Mist, Rain, Smoke, Snow, Squall, Thunderstorm"
+    }
+  },
+  {
+    "request": {
+      "method": "POST",
+      "path": "/predict/traffic",
+      "body": {
+        "datetime": "2018-10-02 08:00",
+        "temp_c": 99
+      }
+    },
+    "status": 422,
+    "response": {
+      "detail": [
+        {
+          "type": "less_than_equal",
+          "loc": [
+            "body",
+            "temp_c"
+          ],
+          "msg": "Input should be less than or equal to 45",
+          "input": 99,
+          "ctx": {
+            "le": 45.0
+          }
+        }
+      ]
+    }
+  }
+]
