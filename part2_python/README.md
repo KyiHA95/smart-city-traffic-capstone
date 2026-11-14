@@ -171,13 +171,14 @@ Sensor-fault hours are excluded from all figures. Each saved figure is logged at
 
 ## 9. Version control
 
-The work was committed in stages, one commit per task, for example:
+Part 2 was committed task by task. The commit messages in the repository history are:
 
 ```
-Add Part 2 data pipeline with schema validation and logging
-Add data cleaning steps with monthly median imputation
-Add feature engineering module
-Add traffic visualisations
-Add traffic analytics CLI application
-Add Part 2 README, sample logs and report
+Python data pipeline
+Feature engineering
+Traffic visualisations
+Command-line-application
+Part 2 logs, outputs, README and report
 ```
+
+Later commits (for example "Correct required Python version to 3.12" and "Pin exact library versions for Parts 1 and 2") record review fixes. See the repository's commit history on GitHub for the full list.

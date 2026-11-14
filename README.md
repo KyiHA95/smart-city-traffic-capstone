@@ -64,33 +64,46 @@ smart-city-traffic-capstone/
 
 ## How to run
 
-Requirements: Python 3.12+ (the pinned library versions in each part's `requirements.txt` need it); Power BI Desktop (Windows) to open the dashboard; the `sqlite3` shell or DB Browser for SQLite for the SQL file.
+Requirements: Python 3.12 or newer (the pinned library versions in each part's `requirements.txt` need it; the project was tested with Python 3.12, and the MLflow UI screenshots were checked with Python 3.13); Power BI Desktop (Windows) to open the dashboard; the `sqlite3` shell or DB Browser for SQLite for the SQL file.
 
 ```bash
+# Run each block from the repository root (smart-city-traffic-capstone/)
+
 # Part 1: rebuild the SQLite database and run every query
 cd part1_data_analytics/sql
 sqlite3 traffic.db < traffic_analysis.sql
+cd ../..
 
 # Part 1: reproduce the statistics and probability results (Tasks 2-3)
-cd ../statistics
+cd part1_data_analytics/statistics
 pip install -r requirements.txt
 python stats_probability_analysis.py
+cd ../..
 
 # Part 2: run the full pipeline, then query it with the CLI
 cd part2_python
 pip install -r requirements.txt
 python pipeline.py
 python cli_app/traffic_cli.py summary
+cd ..
 
 # Part 3: rebuild all models, MLflow runs, monitoring and API tests (about 2 minutes)
 cd part3_machine_learning
-python notebooks/run_part3.py              # packages are listed in part3_machine_learning/README.md
+pip install -r requirements.txt
+python notebooks/run_part3.py
 python recommendation_system/recommender.py --day Friday --weather Snow --month 1
 uvicorn deployment.app:app --reload          # API docs at http://127.0.0.1:8000/docs
 mlflow ui --backend-store-uri sqlite:///mlflow/mlflow.db
+cd ..
 ```
 
+MLflow: `part3_machine_learning/mlflow/mlflow.db` holds every experiment, run, parameter, metric and registered model version. Screenshots of the MLflow UI are in `part3_machine_learning/mlflow/screenshots/`. The MLflow copies of the model files are not committed (they duplicate `part3_machine_learning/models/`), so model-artifact links in the UI only work after `python notebooks/run_part3.py` has been run locally.
+
 Logging: every Python module uses `logging.getLogger(__name__)`; handlers are configured only in entry-point scripts and write to the console and a log file. Details are in each part's README.
+
+## Version history
+
+The project was developed locally and pushed to GitHub in stages, one commit per task, once each part was complete. Later commits record fixes made after reviewing the repository.
 
 ## Tools
 
