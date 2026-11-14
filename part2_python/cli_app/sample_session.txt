@@ -1,0 +1,62 @@
+$ python cli_app/traffic_cli.py summary
+I-94 WESTBOUND TRAFFIC - DATASET SUMMARY
+  Period covered      : 02 Oct 2012 to 30 Sep 2018
+  Hours in dataset    : 40,575 (32 flagged as sensor faults)
+  Average volume      : 3,293 vehicles/hour
+  Busiest hour ever   : Thu 09 Mar 2017 16:00 (7,280 vehicles)
+  Congested hours     : 15.1% of hours above 5,500
+  Congestion classes  : Low 25%, Medium 25%, High 25%, Severe 25%
+[exit code 0]
+
+$ python cli_app/traffic_cli.py query --datetime "2017-03-14 08:00"
+TRAFFIC ON Tuesday 14 March 2017, 08:00
+  Traffic volume  : 6,007 vehicles (typical for this hour and day: 5,592)
+  Congestion      : Severe  - above the 5,500 congestion threshold
+  Weather         : Clear (sky is clear), -14.6 °C, cloud cover 1%
+  Precipitation   : rain 0.0 mm, snow 0.0 mm
+[exit code 0]
+
+$ python cli_app/traffic_cli.py peak --top 5 --day-type weekday
+TOP 5 HIGHEST-TRAFFIC PERIODS (weekday hours, all years)
+  Rank Day        Hour           Avg vehicles  % congested
+  1    Wednesday  16:00-16:59         6,414         96%
+  2    Tuesday    16:00-16:59         6,389         94%
+  3    Thursday   16:00-16:59         6,344         94%
+  4    Thursday   07:00-07:59         6,176         92%
+  5    Wednesday  07:00-07:59         6,172         88%
+[exit code 0]
+
+$ python cli_app/traffic_cli.py compare --year 2017
+WEEKDAY vs WEEKEND TRAFFIC (2017, holidays excluded)
+  Time of day               Weekday  Weekend  Difference
+  Night (00-05h)                909      758       +20%
+  Morning (06-11h)            5,295    2,773       +91%
+  Afternoon (12-17h)          5,537    4,542       +22%
+  Evening (18-23h)            2,934    2,945        +0%
+  All hours                   3,668    2,758       +33%
+  Congested hours: weekday 22.7%, weekend 0.5%
+[exit code 0]
+
+$ python cli_app/traffic_cli.py recommend --day Friday --from 6 --to 20
+RECOMMENDED TRAVEL TIMES - Friday, between 06:00 and 20:59
+  Hour           Avg vehicles  % congested  % severe
+  20:00-20:59         3,076          0%        0%
+  19:00-19:59         3,664          0%        0%
+  10:00-10:59         4,593          0%        8%
+  Avoid: 16:00-16:59, the busiest hour in this window (6,113 vehicles, 91% congested)
+[exit code 0]
+
+$ python cli_app/traffic_cli.py weather --condition Snow
+TRAFFIC BY WEATHER CONDITION (overall average 3,293 vehicles/hour)
+  Weather         Hours  Avg vehicles  vs overall  % congested  Avg temp
+  Snow            2,786         3,012         -9%          9%    -5.3 °C
+[exit code 0]
+
+$ python cli_app/traffic_cli.py query --datetime "2017-02-30 08:00"
+2026-11-13 03:59:51 | ERROR    | traffic_cli | Invalid input for 'query': Malformed date/time '2017-02-30 08:00'. Use the format YYYY-MM-DD HH:MM, for example 2017-03-14 08:00
+[exit code 2]
+
+$ python cli_app/traffic_cli.py recommend --day Funday
+2026-11-13 03:59:52 | ERROR    | traffic_cli | Invalid input for 'recommend': Unknown day 'Funday'. Use one of: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+[exit code 2]
+

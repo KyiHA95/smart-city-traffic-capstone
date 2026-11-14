@@ -1,0 +1,18 @@
+2026-11-13 03:59:48 | INFO     | traffic_cli | Command invoked: summary | arguments: {}
+2026-11-13 03:59:48 | INFO     | traffic_cli | Command completed: summary
+2026-11-13 03:59:48 | INFO     | traffic_cli | Command invoked: query | arguments: {'datetime': '2017-03-14 08:00'}
+2026-11-13 03:59:49 | INFO     | traffic_cli | Command completed: query
+2026-11-13 03:59:49 | INFO     | traffic_cli | Command invoked: peak | arguments: {'top': 5, 'day_type': 'weekday', 'year': None}
+2026-11-13 03:59:49 | INFO     | traffic_cli | Command completed: peak
+2026-11-13 03:59:50 | INFO     | traffic_cli | Command invoked: compare | arguments: {'year': 2017}
+2026-11-13 03:59:50 | INFO     | traffic_cli | Command completed: compare
+2026-11-13 03:59:50 | INFO     | traffic_cli | Command invoked: recommend | arguments: {'day': 'Friday', 'start': 6, 'end': 20, 'top': 3}
+2026-11-13 03:59:50 | INFO     | traffic_cli | Command completed: recommend
+2026-11-13 03:59:51 | INFO     | traffic_cli | Command invoked: weather | arguments: {'condition': 'Snow'}
+2026-11-13 03:59:51 | INFO     | traffic_cli | Command completed: weather
+2026-11-13 03:59:51 | INFO     | traffic_cli | Command invoked: query | arguments: {'datetime': '2017-02-30 08:00'}
+2026-11-13 03:59:51 | ERROR    | traffic_cli | Invalid input for 'query': Malformed date/time '2017-02-30 08:00'. Use the format YYYY-MM-DD HH:MM, for example 2017-03-14 08:00
+2026-11-13 03:59:52 | INFO     | traffic_cli | Command invoked: recommend | arguments: {'day': 'Funday', 'start': 6, 'end': 20, 'top': 3}
+2026-11-13 03:59:52 | ERROR    | traffic_cli | Invalid input for 'recommend': Unknown day 'Funday'. Use one of: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+2026-11-13 04:01:57 | INFO     | traffic_cli | Command invoked: summary | arguments: {}
+2026-11-13 04:01:58 | INFO     | traffic_cli | Command completed: summary
