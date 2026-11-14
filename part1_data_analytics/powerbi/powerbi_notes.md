@@ -1,12 +1,12 @@
 # Power BI Traffic Intelligence Dashboard: Preparation Notes and Findings
 
-**Author:** Kyi Htoo Aung | Part 1, Task 4 | Files: `traffic_dashboard.pbix`, `traffic_dashboard.pdf`, `Screenshot 2026-11-13 003316.png`, `Screenshot 2026-11-13 003340.png`, `Screenshot 2026-11-13 003457.png`
+**Author:** Kyi Htoo Aung | Part 1, Task 4 | Files: `traffic_dashboard.pbix`, `traffic_dashboard.pdf`, `data_quality_profile_1.png`, `data_quality_profile_2.png`, `power_query_editor.png`
 
 ---
 
 ## 4.1 Data quality and preparation (Power Query Editor)
 
-The raw file `Metro_Interstate_Traffic_Volume.csv` was imported with **Get data > Text/CSV** and prepared in Power Query Editor. The query was renamed **Traffic**. Column quality, distribution and profile were switched on with profiling based on the **entire data set** (screenshots `Screenshot 2026-11-13 003316.png` and `Screenshot 2026-11-13 003340.png` show column quality and distribution for the original and added columns; `Screenshot 2026-11-13 003457.png` shows the full Power Query window).
+The raw file `Metro_Interstate_Traffic_Volume.csv` was imported with **Get data > Text/CSV** and prepared in Power Query Editor. The query was renamed **Traffic**. Column quality, distribution and profile were switched on with profiling based on the **entire data set** (screenshots `data_quality_profile_1.png` and `data_quality_profile_2.png` show column quality and distribution for the original and added columns; `power_query_editor.png` shows the full Power Query window).
 
 ### Rows and columns
 
